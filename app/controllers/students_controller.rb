@@ -20,6 +20,11 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
+  end 
+   
+  def show
+    @student = Student.find(params[:id])
+    render json: @student
   end
 
   def edit
@@ -53,7 +58,7 @@ class StudentsController < ApplicationController
   end
 
   def send_webhook_notification(event_type, data)
-    webhook_url = 'http://your-webhook-endpoint.com/webhooks/handle'
+    webhook_url = 'http://localhost:3000/webhooks'
     payload = { event_type: event_type, data: data }
     response = HTTParty.post(webhook_url, body: payload.to_json, headers: { 'Content-Type' => 'application/json' })
     # Manejar la respuesta del servicio de webhook según sea necesario
