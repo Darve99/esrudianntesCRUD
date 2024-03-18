@@ -1,0 +1,15 @@
+<!-- app/views/students/new.html.erb -->
+<h1>New Student</h1>
+
+<%= form_with(model: @student, url: students_path, method: :post) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :email %>
+  <%= form.text_field :email %>
+
+  <%= form.label :age %>
+  <%= form.number_field :age %>
+
+  <%= form.submit 'Create Student' %>
+<% end %>
